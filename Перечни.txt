@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<title>Перечни</title>
+<meta charset="utf">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="header-top">
+</div>
+<div class="time">
+<script>
+let d = new Date();
+document.write(d.toLocaleString());
+</script>
+</div>
+<nav>
+<a href="main.htm">ГЛАВНАЯ</a>
+<a href="Перечни.htm">ПЕРЕЧНИ</a> 
+<a href="Программа.htm">ПРОГРАММА</a>
+</nav>
+</header>
+<main>
+<p><i>Страница в разработке</i></p>
+</main>
+<script src="index.js"></script>
+</body>
+</html>

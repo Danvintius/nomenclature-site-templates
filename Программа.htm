@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<title>Перечни</title>
+<meta charset="utf">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="header-top">
+</div>
+<div class="time">
+<script>
+let d = new Date();
+document.write(d.toLocaleString());
+</script>
+</div>
+<nav>
+<a href="main.htm">ГЛАВНАЯ</a>
+<a href="Перечни.htm">ПЕРЕЧНИ</a> 
+<a href="Программа.htm">ПРОГРАММА</a>
+</nav>
+</header>
+<main>
+    <div class="container" style="border: 1px solid orange; margin-top: 15px;">
+    Выберите перечни, в которых искать:
+    <div>
+    <label>
+        <input type="checkbox" class="checkbox" id="main-checkbox">
+        Перечень 2020
+    </label>
+    <label>
+        <input type="checkbox" class="checkbox" id="main-checkbox">
+        Перечень НТД
+    </label>
+    <label>
+        <input type="checkbox" class="checkbox" id="main-checkbox">
+        Перечень Минпроса
+    </label>
+    <label>
+        <input type="checkbox" id="select-all">
+        Выбрать все
+    </label>
+</div>
+</div><br>
+    Что искать?<br>
+    <input type="search" placeholder="Например, служебные записки" size="40">
+    <button>Искать</button>
+</main>
+<script src="index.js"></script>
+<script>
+    const checkbox = document.getElementsByClassName('checkbox')
+    const select = document.getElementById('select-all')
+    for (let i = 0; i < checkbox.length; i++) {
+        select.onchange = function() {
+      checkbox[0].checked = true;
+      checkbox[1].checked = true;
+      checkbox[2].checked = true;
+      if (select.checked == false) {
+        checkbox[0].checked = false;  
+        checkbox[1].checked = false;
+        checkbox[2].checked = false;
+    }
+    }
+}
+</script>
+</body>
+</html>
