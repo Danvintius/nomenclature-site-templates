@@ -9,21 +9,24 @@
 <header>
 <div class="header-top">
 </div>
-<div class="time">
-<script>
-let d = new Date();
-document.write(d.toLocaleString());
-</script>
-</div>
-<nav>
-<a href="main.htm">ГЛАВНАЯ</a>
-<a href="Перечни.htm">ПЕРЕЧНИ</a> 
-<a href="Программа.htm">ПРОГРАММА</a>
-</nav>
+<div class="time" style="margin-left: 100px;">
+    <script>
+    let d = new Date();
+    document.write(d.toLocaleString());
+    </script>
+    </div>
+    <div style="font-size: 70px;">
+    </div>
+    <nav style="margin-top: 80px;">
+    <a href="main.htm">ГЛАВНАЯ</a>
+    <a href="Перечни.htm">ПЕРЕЧНИ</a> 
+    <a href="Программа.htm">ПОИСК</a>
+    </nav>
 </header>
 <main>
+    <div class="version" style="font-size: 12px;">Версия Alpha-1.0.0</div>
     <div class="container" style="border: 1px solid orange; margin-top: 15px;">
-    Выберите перечни, в которых искать:
+    Выберите Перечни, в которых искать:
     <div>
     <label>
         <input type="checkbox" class="checkbox" id="main-checkbox">
@@ -44,23 +47,67 @@ document.write(d.toLocaleString());
 </div>
 </div><br>
     Что искать?<br>
-    <input type="search" placeholder="Например, служебные записки" size="40">
+    <input id="search" type="search" placeholder="Например, служебные записки" size="40">
     <button>Искать</button>
+<div class="search-results" style="height: 300px; border: 1px solid gray; margin-top: 10px;">
+Результаты поиска:
+<div class="search-inbox" style="height: 280px; border-top: 1px solid gray; margin-top: 0px;"></div>
+</div>
+<div><i>Примечание: если у статьи Перечня только одно примечание и оно относится к сроку хранения, ссылка на него в результатах поиска не указывается</i></div>
 </main>
+<footer style="position: absolute; bottom: 0">
+    <div>E-mail: nomendella@mail.ru</div>
+</footer>
+<style>
+    header {
+        background-image: url(Nomendella.jpg);
+        background-repeat: no-repeat;
+        background-size: 500px;
+        height: 150px;
+    }
+    
+    nav a:nth-child(1) {
+        margin-right: 20px;
+    }
+    
+    nav a:nth-child(2) {
+        margin-right: 140px;
+    }
+</style>
 <script src="index.js"></script>
 <script>
-    const checkbox = document.getElementsByClassName('checkbox')
+    const checkboxes = document.getElementsByClassName('checkbox')
     const select = document.getElementById('select-all')
-    for (let i = 0; i < checkbox.length; i++) {
-        select.onchange = function() {
-      checkbox[0].checked = true;
-      checkbox[1].checked = true;
-      checkbox[2].checked = true;
-      if (select.checked == false) {
-        checkbox[0].checked = false;  
-        checkbox[1].checked = false;
-        checkbox[2].checked = false;
+    let checked = []
+
+    for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].onchange = function() {
+       let allChecked = 3;
+       checked.unshift(this);
+       if (checked.length == 3) {
+        select.checked = true;
+       } else {
+        select.checked = false;
+        }
     }
+}
+select.onchange = function() {
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = this.checked;
+    }
+    }
+
+let search = document.getElementById('search')
+let searchButton = document.querySelector('button')
+let searchInbox = document.querySelector('.search-inbox')
+
+searchButton.onclick = function() {
+    if (search.value == "test: приказы") {
+        searchInbox.innerText = "Приказы, распоряжения; документы (справки, сводки, информации, доклады) к ним: по основной (профильной) деятельности / Пост. (1)(2), ст. 19 (Перечень 2020) / (1) Присланные для сведения - ДМН (2) В организациях, не являющихся источниками комплектования гос. или мун. архивов - До ликвидации организации"
+    } else if (search.value === " ") {
+        searchInbox.innerTeat = "Вы ничего не ввели"
+    } else {
+        searchInbox.innerText = "Ничего не найдено. Функционал находится в процессе разработки"
     }
 }
 </script>

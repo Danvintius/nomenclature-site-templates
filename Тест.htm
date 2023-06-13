@@ -113,17 +113,30 @@ label {
 }
 </style>
 <script>
-const pizza = document.getElementById('main-checkbox')
+let pizza = document.getElementById('main-checkbox')
 const checkboxD = document.getElementsByClassName('sub-checkbox')
 const dough = document.getElementsByName('sub-checkbox-1')
 const cheese = document.getElementsByName('sub-checkbox-2')
 const tomato = document.getElementsByName('sub-checkbox-3')
-/*
-pizza.onchange = function() {
-    console.log('is')
-    dough.checked = true;
+let checked = []
+
+for (let i = 0; i < checkboxD.length; i++) {
+    checkboxD[i].onchange = function() {
+       let allChecked = 3;
+       checked.unshift(this);
+       if (checked.length == 3) {
+        pizza.checked = true;
+       } else {
+        pizza.checked = false;
+        }
     }
-*/
+}
+pizza.onchange = function() {
+    for (let i = 0; i < checkboxD.length; i++) {
+        checkboxD[i].checked = this.checked;
+    }
+    }
+/*
 for (let i = 0; i < checkboxD.length; i++) {
     pizza.onchange = function() {
       checkboxD[0].checked = true;
@@ -134,16 +147,25 @@ for (let i = 0; i < checkboxD.length; i++) {
         checkboxD[1].checked = false;
         checkboxD[2].checked = false;
     }
-    }/*
-    checkboxD[0].onchange = function() {
+    }
+    //checkboxD[i].onchange = function() {
      //   console.log('Да')
-       if (checkboxD[0].checked == true && checkboxD[1].checked == true) {
-        pizza.checked = true;
+     //  pizza.checked = true;
+     //  if (checkboxD[0].checked === true && checkboxD[1].checked === true) {
+     //   pizza.checked = true;
     //} else {
     //    pizza.checked = false;
     }
+    function pizzaCheck() {
+        console.log('click');
+        let pizza2 = document.getElementById('main-checkbox');
+        pizza2.ckecked = true;
     }
-
+    checkboxD.forEach((elem) => {
+        elem.addEventListener('change', pizzaCheck);
+    })
+    //}
+/*
     checkboxD[1].onchange = function() {
     //    pizza.checked = true;
     }
@@ -151,9 +173,11 @@ for (let i = 0; i < checkboxD.length; i++) {
     checkboxD[2].onchange = function() {
     //    pizza.checked = true;
     }*/
-}
-if (dough.checked == true) {
-    pizza.checked == true;
-}
+//}
+//if (cheese.checked === true) {
+//    if (dough.checked === true) {
+//    pizza.checked = true;
+ //   }
+//}
 </script>
 </html>

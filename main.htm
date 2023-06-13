@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+<head style="height: 100%;">
 <title>Всё о номенклатуре дел</title>
 <meta charset="utf">
 <link href="style.css" rel="stylesheet">
@@ -9,21 +9,43 @@
 <header>
 <div class="header-top">
 </div>
-<div class="time">
+<div class="time" style="margin-left: 100px;">
 <script>
 let d = new Date();
 document.write(d.toLocaleString());
 </script>
 </div>
-<nav>
+<div style="font-size: 70px;">
+</div>
+<nav style="margin-top: 80px;">
 <a href="main.htm">ГЛАВНАЯ</a>
 <a href="Перечни.htm">ПЕРЕЧНИ</a> 
-<a href="Программа.htm">ПРОГРАММА</a>
+<a href="Программа.htm">ПОИСК</a>
 </nav>
 </header>
-<main>
+<main style="background-color: gray;">
 <p><i>Страница в разработке</i></p>
+<b>Nomendella</b>
 </main>
+<footer style="position: absolute; bottom: 0">
+<div>E-mail: nomendella@mail.ru</div>
+</footer>
+<style>
+header {
+    background-image: url(Nomendella.jpg);
+    background-repeat: no-repeat;
+    background-size: 500px;
+    height: 150px;
+}
+
+nav a:nth-child(1) {
+    margin-right: 20px;
+}
+
+nav a:nth-child(2) {
+    margin-right: 140px;
+}
+</style>
 <script src="index.js"></script>
 </body>
 </html>
